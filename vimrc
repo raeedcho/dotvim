@@ -1,6 +1,12 @@
+" Pathogen stuff
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
+" Execute pathogen stuff
+execute pathogen#infect()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
