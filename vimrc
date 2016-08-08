@@ -1,4 +1,4 @@
-" Pathogen stuff
+" Setup stuff {{{
 runtime bundle/pathogen/autoload/pathogen.vim
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -7,59 +7,75 @@ set nocompatible
 
 " Execute pathogen stuff
 execute pathogen#infect()
-
-" Colorscheme
+" }}}
+" Colors {{{
 colorscheme railscasts
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  set undofile		" keep an undo file (undo changes after closing)
-endif
-set history=50		" keep 50 lines of command line history
+syntax enable " enable syntax processing
+" }}}
+" Spaces and tabs {{{
+set tabstop=4 " number of visual spaces per tab
+set softtabstop=4 " number of spaces in tab when editing
+set expandtab " tabs are spaces
+" }}}
+" UI Config {{{
+set relativenumber " set relative number in gutter
+set number " set line number for current line in gutter
+set showcmd " show command in bottom bar
+set cursorline " highlight current line
+set lazyredraw " redraw only when we need to
+set showmatch " highlight matching [{()}]
 set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-
-if has("gui_running")
-  set guifont=Consolas:h11:cANSI
-  set guioptions-=T " no toolbar
-endif " has("gui_running")
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
-
 else
-
   set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
 
-" Set relative line numbers
-set relativenumber
-set number
+" Set font in GUI
+if has("gui_running")
+  set guifont=Consolas:h11:cANSI
+  set guioptions-=T " no toolbar
+endif " has("gui_running")
+"}}}
+" Searching {{{
+set incsearch " search as characters are entered
+set hlsearch " highlight matches
+set ignorecase " ignore case
+set smartcase " ignore case when all lower, but pay attention when some caps
+nnoremap <leader><space> :nohlsearch<CR>
+"}}}
+" Folding {{{
+set foldenable " enable folding
+set foldlevelstart=10 " open most folds by default
+set foldnestmax=10 " 10 nested fold max
+set foldmethod=indent " fold based on indent level (default was manual)
+"}}}
+" Movement {{{
+nnoremap gV `[v`] " visually select block of characters just inserted
+"}}}
+" Leader shortcuts {{{
+nnoremap <leader>u :GundoToggle<CR>
+"}}}
+" Backups {{{
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file (restore to previous version)
+"  set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+"  set backupskip=/tmp/*,/private/tmp/*
+"  set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+"  set writebackup
+  set undofile		" keep an undo file (undo changes after closing)
+endif
+set history=50		" keep 50 lines of command line history
+" }}}
+" Fold vimrc
+set modelines=1
+" vim:foldmethod=marker:foldlevel=0
