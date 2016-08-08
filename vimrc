@@ -9,7 +9,8 @@ set nocompatible
 execute pathogen#infect()
 " }}}
 " Colors {{{
-colorscheme railscasts
+" colorscheme railscasts
+colorscheme ron
 syntax enable " enable syntax processing
 " }}}
 " Spaces and tabs {{{
