@@ -1,5 +1,5 @@
 " Pathogen stuff
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/pathogen/autoload/pathogen.vim
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -7,6 +7,9 @@ set nocompatible
 
 " Execute pathogen stuff
 execute pathogen#infect()
+
+" Colorscheme
+colorscheme railscasts
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -57,6 +60,6 @@ else
 
 endif " has("autocmd")
 
-" Set line numbers
+" Set relative line numbers
+set relativenumber
 set number
-
