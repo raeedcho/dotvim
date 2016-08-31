@@ -78,5 +78,5 @@ endif
 set history=50		" keep 50 lines of command line history
 " }}}
 " Fold vimrc
-set modelines=1
+set modelines=0
 " vim:foldmethod=marker:foldlevel=0
