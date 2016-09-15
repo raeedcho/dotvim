@@ -66,8 +66,8 @@ if has("autocmd")
         autocmd!
         au BufReadPre  ?* setlocal foldmethod=indent
         au BufWinEnter ?* if &fdm == 'indent' | setlocal foldmethod=manual | endif
-        au BufWritePost,BufLeave,WinLeave ?* mkview
-        au BufReadPre ?* silent loadview
+        "au BufWritePost,BufLeave,WinLeave ?* mkview
+        "au BufReadPre ?* silent loadview
     augroup END
 endif
 "}}}
