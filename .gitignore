@@ -2,3 +2,4 @@ viminfo
 *~
 *.swp
 view/
+.netrwhist
