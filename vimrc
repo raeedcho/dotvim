@@ -75,6 +75,7 @@ endif
 nnoremap gV `[v`] " visually select block of characters just inserted
 "}}}
 " Leader shortcuts {{{
+let mapleader = "\<Space>"
 nnoremap <leader>u :GundoToggle<CR>
 "}}}
 " Backups {{{
