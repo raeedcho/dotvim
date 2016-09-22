@@ -45,11 +45,11 @@ if has("gui_running")
   set guifont=Consolas:h11:cANSI
   set guioptions-=T " no toolbar
 endif " has("gui_running")
-
-" Airline configuration
+"}}}
+" Airline configuration {{{
 set laststatus=2 " Always show airline bar
 let g:airline_powerline_fonts = 1 " Use powerline symbols for airline
-"}}}
+" }}}
 " Searching {{{
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
