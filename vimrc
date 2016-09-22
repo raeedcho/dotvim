@@ -45,6 +45,16 @@ if has("gui_running")
   set guifont=Consolas:h11:cANSI
   set guioptions-=T " no toolbar
 endif " has("gui_running")
+
+" More natural movement between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Open splits to right and bottom
+set splitbelow
+set splitright
 "}}}
 " Airline configuration {{{
 set laststatus=2 " Always show airline bar
