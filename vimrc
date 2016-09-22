@@ -99,6 +99,7 @@ else
 "  set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 "  set writebackup
   set undofile		" keep an undo file (undo changes after closing)
+  set undodir=~/.vim/.undo
 endif
 set history=50		" keep 50 lines of command line history
 " }}}
