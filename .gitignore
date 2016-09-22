@@ -3,3 +3,4 @@ viminfo
 *.swp
 view/
 .netrwhist
+.undo
