@@ -92,5 +92,10 @@ else
 endif
 set history=50		" keep 50 lines of command line history
 " }}}
+" Vimwiki stuff {{{
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki'}]
+let g:vimwiki_dir_link = 'index' "automatically resolve folder links as folder/index.wiki
+"let g:vimwiki_hl_headers = 1 "highlight headers with different colors
+"}}}
 " Set modelines to 0
 set modelines=0
