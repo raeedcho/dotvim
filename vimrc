@@ -93,7 +93,7 @@ nnoremap <leader>u :GundoToggle<CR>
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file (restore to previous version)
+"  set backup		" keep a backup file (restore to previous version)
 "  set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 "  set backupskip=/tmp/*,/private/tmp/*
 "  set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
