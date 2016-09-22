@@ -35,6 +35,7 @@ if has("autocmd")
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
+  filetype plugin on
 else
   set autoindent		" always set autoindenting on
 endif " has("autocmd")
