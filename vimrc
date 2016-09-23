@@ -91,8 +91,8 @@ let mapleader = "\<Space>"
 nnoremap <leader>u :GundoToggle<CR>
 
 " More natural movement between buffers
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprevious<CR>
+nmap <leader>j :bnext<CR>
+nmap <leader>k :bprevious<CR>
 "}}}
 " Backups {{{
 if has("vms")
