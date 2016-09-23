@@ -52,10 +52,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" More natural movement between buffers
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprevious<CR>
-
 " Open splits to right and bottom
 set splitbelow
 set splitright
@@ -93,6 +89,10 @@ nnoremap gV `[v`] " visually select block of characters just inserted
 " Leader shortcuts {{{
 let mapleader = "\<Space>"
 nnoremap <leader>u :GundoToggle<CR>
+
+" More natural movement between buffers
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
 "}}}
 " Backups {{{
 if has("vms")
