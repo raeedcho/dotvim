@@ -15,6 +15,7 @@ nnoremap <leader>u :GundoToggle<CR>
 " More natural movement between buffers
 nmap <leader>j :bnext<CR>
 nmap <leader>k :bprevious<CR>
+"  }}}
 " Colors {{{
 " colorscheme railscasts
 colorscheme ron
@@ -92,7 +93,6 @@ endif
 "}}}
 " Movement {{{
 nnoremap gV `[v`] " visually select block of characters just inserted
-"}}}
 "}}}
 " Backups {{{
 if has("vms")
