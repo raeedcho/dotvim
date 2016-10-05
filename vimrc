@@ -7,6 +7,7 @@ set nocompatible
 
 " Execute pathogen stuff
 execute pathogen#infect()
+Helptags " Generate Helptags
 " }}}
 " Leader shortcuts {{{
 let mapleader = "\<Space>"
