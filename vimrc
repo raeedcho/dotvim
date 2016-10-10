@@ -16,6 +16,10 @@ nnoremap <leader>u :GundoToggle<CR>
 " More natural movement between buffers
 nmap <leader>j :bnext<CR>
 nmap <leader>k :bprevious<CR>
+
+" Allow changing between buffers with unsaved changes
+set hidden
+
 "  }}}
 " Colors {{{
 " colorscheme railscasts
