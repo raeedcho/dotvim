@@ -18,8 +18,8 @@ nmap <leader>j :bnext<CR>
 nmap <leader>k :bprevious<CR>
 "  }}}
 " Colors {{{
-" colorscheme railscasts
-colorscheme ron
+colorscheme railscasts
+" colorscheme ron
 syntax enable " enable syntax processing
 " }}}
 " Spaces and tabs {{{
