@@ -139,5 +139,10 @@ function! VimwikiLinkHandler(link)
   endif
 endfunction
 "}}}
+" Ledger stuff {{{
+let g:ledger_fillstring = '    -'
+let g:ledger_detailed_first = 1
+let g:ledger_fold_blanks = 0
+"}}}
 " Set modelines to 0
 set modelines=0
