@@ -57,6 +57,9 @@ endif " has("autocmd")
 if has("gui_running")
   set guifont=Consolas:h11:cANSI
   set guioptions-=T " no toolbar
+  set guioptions-=m " no menu
+  set guioptions-=r " no right scroll
+  set guioptions-=L " no left scroll
 endif " has("gui_running")
 
 " More natural movement between splits
