@@ -10,8 +10,11 @@ execute pathogen#infect()
 Helptags " Generate Helptags
 " }}}
 " Leader shortcuts {{{
-let mapleader = "\<Space>"
+let mapleader = ","
 nnoremap <leader>u :GundoToggle<CR>
+
+" remap escape to something easier
+inoremap jj <ESC>
 
 " More natural movement between buffers
 nmap <leader>j :bprevious<CR>
