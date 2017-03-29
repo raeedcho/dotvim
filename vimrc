@@ -144,5 +144,9 @@ let g:ledger_fillstring = '    -'
 let g:ledger_detailed_first = 1
 let g:ledger_fold_blanks = 0
 "}}}
+" Goyo/Limelight stuff {{{
+autocmd! User GoyoEnter Limelight | set so=999
+autocmd! User GoyoLeave Limelight! | set so=0
+"}}}
 " Set modelines to 0
 set modelines=0
