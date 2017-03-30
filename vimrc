@@ -9,6 +9,7 @@ set nocompatible
 execute pathogen#infect()
 Helptags " Generate Helptags
 " }}}
+
 " Leader shortcuts {{{
 let mapleader = "\<Space>"
 nnoremap <leader>u :GundoToggle<CR>
@@ -17,20 +18,26 @@ nnoremap <leader>u :GundoToggle<CR>
 nmap <leader>j :bprevious<CR>
 nmap <leader>k :bnext<CR>
 
+" Easier escape from insert
+inoremap jj <ESC>
+
 " Allow changing between buffers with unsaved changes
 set hidden
 
 "  }}}
+
 " Colors {{{
 colorscheme railscasts
 " colorscheme ron
 syntax enable " enable syntax processing
 " }}}
+
 " Spaces and tabs {{{
 set tabstop=4 " number of visual spaces per tab
 set softtabstop=4 " number of spaces in tab when editing
 set expandtab " tabs are spaces
 " }}}
+
 " UI Config {{{
 set relativenumber " set relative number in gutter
 set number " set line number for current line in gutter
@@ -72,11 +79,13 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 "}}}
+
 " Airline configuration {{{
 set laststatus=2 " Always show airline bar
 let g:airline_powerline_fonts = 1 " Use powerline symbols for airline
 let g:airline#extensions#tabline#enabled = 1 " display all buffers when there's only one tab open
 " }}}
+
 " Searching {{{
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
@@ -84,6 +93,7 @@ set ignorecase " ignore case
 set smartcase " ignore case when all lower, but pay attention when some caps
 nnoremap <leader><space> :nohlsearch<CR>
 "}}}
+
 " Folding {{{
 set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
@@ -99,9 +109,12 @@ if has("autocmd")
     augroup END
 endif
 "}}}
+
 " Movement {{{
-nnoremap gV `[v`] " visually select block of characters just inserted
+" visually select block of characters just inserted
+nnoremap gV `[v`]
 "}}}
+
 " Backups {{{
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -116,6 +129,7 @@ else
 endif
 set history=50		" keep 50 lines of command line history
 " }}}
+
 " Vimwiki stuff {{{
 let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_dir_link = 'index' "automatically resolve folder links as folder/index.wiki
@@ -142,14 +156,18 @@ function! VimwikiLinkHandler(link)
   endif
 endfunction
 "}}}
+
 " Ledger stuff {{{
 let g:ledger_fillstring = '    -'
 let g:ledger_detailed_first = 1
 let g:ledger_fold_blanks = 0
 "}}}
+
 " Goyo/Limelight stuff {{{
+nmap <leader>g :Goyo<CR>
 autocmd! User GoyoEnter Limelight | set so=999
 autocmd! User GoyoLeave Limelight! | set so=0
 "}}}
+
 " Set modelines to 0
 set modelines=0
