@@ -14,7 +14,8 @@ let mapleader = ","
 nnoremap <leader>u :GundoToggle<CR>
 
 " remap escape to something easier
-inoremap jj <ESC>
+inoremap jk <ESC>
+inoremap <ESC> <nop>
 
 " More natural movement between buffers
 nmap <leader>j :bprevious<CR>
