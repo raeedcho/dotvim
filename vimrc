@@ -11,7 +11,7 @@ Helptags " Generate Helptags
 " }}}
 
 " Leader shortcuts {{{
-let mapleader = ","
+let mapleader = \<Space>
 nnoremap <leader>u :GundoToggle<CR>
 
 " remap escape to something easier
@@ -21,9 +21,6 @@ inoremap <ESC> <nop>
 " More natural movement between buffers
 nmap <leader>j :bprevious<CR>
 nmap <leader>k :bnext<CR>
-
-" Easier escape from insert
-inoremap jj <ESC>
 
 " Allow changing between buffers with unsaved changes
 set hidden
