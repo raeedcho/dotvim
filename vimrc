@@ -11,7 +11,7 @@ Helptags " Generate Helptags
 " }}}
 
 " Leader shortcuts {{{
-let mapleader = \<Space>
+let mapleader = "\<Space>"
 nnoremap <leader>u :GundoToggle<CR>
 
 " remap escape to something easier
