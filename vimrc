@@ -168,7 +168,7 @@ let g:ledger_fold_blanks = 0
 "}}}
 
 " Goyo/Limelight stuff {{{
-nmap <leader>g :Goyo<CR>
+nnoremap <leader>g :Goyo<CR>
 autocmd! User GoyoEnter Limelight | set so=999
 autocmd! User GoyoLeave Limelight! | set so=0
 "}}}
