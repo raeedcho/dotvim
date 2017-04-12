@@ -24,6 +24,7 @@ nnoremap <leader>k :bnext<CR>
 
 " Edit vimrc easily
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Allow changing between buffers with unsaved changes
 set hidden
