@@ -19,8 +19,11 @@ inoremap jk <ESC>
 inoremap <ESC> <nop>
 
 " More natural movement between buffers
-nmap <leader>j :bprevious<CR>
-nmap <leader>k :bnext<CR>
+nnoremap <leader>j :bprevious<CR>
+nnoremap <leader>k :bnext<CR>
+
+" Edit vimrc easily
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 " Allow changing between buffers with unsaved changes
 set hidden
