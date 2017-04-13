@@ -26,6 +26,10 @@ nnoremap <leader>k :bnext<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+" Move by screen line instead of buffer line
+nnoremap j gj
+nnoremap k gk
+
 " Allow changing between buffers with unsaved changes
 set hidden
 
