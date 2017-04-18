@@ -105,13 +105,13 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " Folding {{{
 set foldenable " enable folding
-set foldlevelstart=10 " open most folds by default
+"set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested fold max
 set foldmethod=manual
 if has("autocmd")
     augroup vim_folding
         autocmd!
-        au filetype vim setlocal foldmethod=marker
+        autocmd filetype vim setlocal foldmethod=marker | setlocal foldlevelstart=0
 "        au BufWinEnter ?* if &fdm == 'indent' | setlocal foldmethod=manual | endif
     augroup END
 endif
