@@ -26,12 +26,11 @@ nnoremap <leader>k :bnext<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-" Move by screen line instead of buffer line
-nnoremap j gj
-nnoremap k gk
-
 " Allow changing between buffers with unsaved changes
 set hidden
+
+" Set no line wrapping by default
+set nowrap
 
 "  }}}
 
@@ -118,6 +117,10 @@ endif
 "}}}
 
 " Movement {{{
+" Move by screen line instead of buffer line
+nnoremap j gj
+nnoremap k gk
+
 " visually select block of characters just inserted
 nnoremap gV `[v`]
 "}}}
@@ -172,8 +175,8 @@ let g:ledger_fold_blanks = 0
 
 " Goyo/Limelight stuff {{{
 nnoremap <leader>g :Goyo<CR>
-autocmd! User GoyoEnter Limelight | set so=999
-autocmd! User GoyoLeave Limelight! | set so=0
+autocmd! User GoyoEnter Limelight | set so=999 | set wrap
+autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
 "}}}
 
 " Set modelines to 0
