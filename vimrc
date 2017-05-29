@@ -111,8 +111,10 @@ set foldmethod=indent " fold based on indent level (default was manual)
 if has("autocmd")
     augroup vim_folding
         autocmd!
-        au BufReadPre  ?* setlocal foldmethod=indent
-        au BufWinEnter ?* if &fdm == 'indent' | setlocal foldmethod=manual | endif
+        autocmd BufReadPre  ?* setlocal foldmethod=indent
+        autocmd FileType vim setlocal foldmethod=marker
+        autocmd FileType ledger setlocal foldmethod=marker
+        "au BufWinEnter ?* if &fdm == 'indent' | setlocal foldmethod=manual | endif
         "au BufWritePost,BufLeave,WinLeave ?* mkview
         "au BufReadPre ?* silent loadview
     augroup END
@@ -170,6 +172,18 @@ endfunction
 let g:ledger_fillstring = '    -'
 let g:ledger_detailed_first = 1
 let g:ledger_fold_blanks = 0
+let g:ledger_align_at = 62
+let g:ledger_extra_options = '--pedantic --explicit --check-payees'
+let g:ledger_default_commodity = '$'
+let g:ledger_commodity_sep = ' '
+
+if has("autocmd")
+    augroup ledger_commands
+        autocmd!
+        autocmd FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+        autocmd FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
+    augroup END
+endif
 "}}}
 
 " Goyo/Limelight stuff {{{
