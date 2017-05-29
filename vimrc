@@ -26,12 +26,11 @@ nnoremap <leader>k :bnext<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-" Move by screen line instead of buffer line
-nnoremap j gj
-nnoremap k gk
-
 " Allow changing between buffers with unsaved changes
 set hidden
+
+" Set no line wrapping by default
+set nowrap
 
 "  }}}
 
@@ -105,9 +104,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " Folding {{{
 set foldenable " enable folding
-set foldlevelstart=10 " open most folds by default
+"set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested fold max
-set foldmethod=indent " fold based on indent level (default was manual)
+set foldmethod=manual
 if has("autocmd")
     augroup vim_folding
         autocmd!
@@ -122,6 +121,10 @@ endif
 "}}}
 
 " Movement {{{
+" Move by screen line instead of buffer line
+nnoremap j gj
+nnoremap k gk
+
 " visually select block of characters just inserted
 nnoremap gV `[v`]
 "}}}
@@ -188,8 +191,8 @@ endif
 
 " Goyo/Limelight stuff {{{
 nnoremap <leader>g :Goyo<CR>
-autocmd! User GoyoEnter Limelight | set so=999
-autocmd! User GoyoLeave Limelight! | set so=0
+autocmd! User GoyoEnter Limelight | set so=999 | set wrap
+autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
 "}}}
 
 " Set modelines to 0
