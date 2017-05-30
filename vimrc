@@ -191,7 +191,7 @@ endif
 
 " Goyo/Limelight stuff {{{
 nnoremap <leader>g :Goyo<CR>
-autocmd! User GoyoEnter Limelight | set so=999 | set wrap
+autocmd! User GoyoEnter Limelight | set so=999 | set wrap | set linebreak
 autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
 "}}}
 
