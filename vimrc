@@ -21,6 +21,9 @@ inoremap <ESC> <nop>
 " More natural movement between buffers
 nnoremap <leader>j :bprevious<CR>
 nnoremap <leader>k :bnext<CR>
+nnoremap <leader>h :bfirst<CR>
+nnoremap <leader>l :blast<CR>
+nnoremap <leader>b :b#<CR>
 
 " Edit vimrc easily
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
