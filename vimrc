@@ -56,6 +56,7 @@ set lazyredraw " redraw only when we need to
 set showmatch " highlight matching [{()}]
 set ruler		" show the cursor position all the time
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set clipboard=unnamedplus " set default clipboard to system clipboard
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
