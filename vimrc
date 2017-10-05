@@ -35,8 +35,11 @@ set nowrap
 "  }}}
 
 " Colors {{{
-colorscheme railscasts
+" colorscheme railscasts
 " colorscheme ron
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark
 syntax enable " enable syntax processing
 " }}}
 
