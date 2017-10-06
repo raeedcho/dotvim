@@ -37,6 +37,7 @@ set nowrap
 " Colors {{{
 " colorscheme railscasts
 " colorscheme ron
+" colorscheme apprentice
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
