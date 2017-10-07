@@ -40,3 +40,12 @@
 [submodule "bundle/limelight.vim"]
 	path = bundle/limelight.vim
 	url = https://github.com/junegunn/limelight.vim
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "bundle/Apprentice"]
+	path = bundle/Apprentice
+	url = https://github.com/romainl/Apprentice.git
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git

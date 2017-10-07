@@ -38,14 +38,20 @@ set nowrap
 "  }}}
 
 " Colors {{{
-colorscheme railscasts
+" colorscheme railscasts
 " colorscheme ron
+" colorscheme apprentice
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+set background=dark
 syntax enable " enable syntax processing
 " }}}
 
 " Spaces and tabs {{{
 set tabstop=4 " number of visual spaces per tab
-set softtabstop=4 " number of spaces in tab when editing
+" set softtabstop=4 " number of spaces in tab when editing
+set shiftwidth=4 " number of spaces inserted when indenting
 set expandtab " tabs are spaces
 " }}}
 
@@ -58,6 +64,7 @@ set lazyredraw " redraw only when we need to
 set showmatch " highlight matching [{()}]
 set ruler		" show the cursor position all the time
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
+" set clipboard=unnamed " set default clipboard to system clipboard
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -95,6 +102,7 @@ set splitright
 set laststatus=2 " Always show airline bar
 let g:airline_powerline_fonts = 1 " Use powerline symbols for airline
 let g:airline#extensions#tabline#enabled = 1 " display all buffers when there's only one tab open
+let g:airline_theme='ubaryd'
 " }}}
 
 " Searching {{{
