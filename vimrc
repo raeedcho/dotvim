@@ -26,6 +26,11 @@ nnoremap <leader>k :bnext<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+" Yank to system clipboard
+noremap <leader>d "+d
+noremap <leader>y "+y
+noremap <leader>p "+p
+
 " Allow changing between buffers with unsaved changes
 set hidden
 
