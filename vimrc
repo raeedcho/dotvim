@@ -161,7 +161,7 @@ set history=50		" keep 50 lines of command line history
 " }}}
 
 " Vimwiki stuff {{{
-let g:vimwiki_list = [{'path': '$HOME/Dropbox/wiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '$HOME/Wiki', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_dir_link = 'index' "automatically resolve folder links as folder/index.md
 let g:vimwiki_hl_headers = 1 "highlight headers with different colors
 
