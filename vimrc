@@ -23,7 +23,7 @@ nnoremap <leader>j :bprevious<CR>
 nnoremap <leader>k :bnext<CR>
 nnoremap <leader>h :bfirst<CR>
 nnoremap <leader>l :blast<CR>
-nnoremap <leader>b :b#<CR>
+" nnoremap <leader>b :b#<CR>
 
 " Edit vimrc easily
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
@@ -41,6 +41,22 @@ set hidden
 set nowrap
 
 "  }}}
+
+" Denite {{{
+call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>',
+    \'noremap')
+call denite#custom#map('insert', '<Esc>', '<NOP>',
+    \'noremap')
+call denite#custom#map('normal', '<Esc>', '<NOP>',
+    \'noremap')
+" nnoremap <leader>o :<C-u>Denite -split=no file_rec<CR>
+nnoremap <leader>o :<C-u>Denite file_rec<CR>
+" nnoremap <leader>b :<C-u>Denite -split=no -mode=normal buffer<CR>
+nnoremap <leader>b :<C-u>Denite buffer<CR>
+nnoremap <leader>/ :<C-u>Denite line:buffers<CR>
+nnoremap <leader>* :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+nnoremap <leader>\ :<C-u>Denite grep:. -mode=normal<CR>
+" }}}
 
 " Colors {{{
 " colorscheme railscasts
