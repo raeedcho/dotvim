@@ -156,6 +156,8 @@ endif
 " Move by screen line instead of buffer line
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " visually select block of characters just inserted
 nnoremap gV `[v`]
@@ -222,6 +224,15 @@ endif
 "}}}
 
 " Goyo/Limelight stuff {{{
+" colors for limelight
+let g:limelight_conceal_ctermfg = 'DarkGray'
+let g:limelight_conceal_guifg = 'DarkGray'
+
+" beginning/end of paragraph setup
+let g:limelight_bop = '^'
+let g:limelight_eop = '\ze\n'
+
+" leader shortcut
 nnoremap <leader>g :Goyo<CR>
 autocmd! User GoyoEnter Limelight | set so=999 | set wrap | set linebreak
 autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
