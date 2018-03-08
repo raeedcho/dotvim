@@ -67,6 +67,9 @@ let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 set background=dark
 syntax enable " enable syntax processing
+
+" use current background color (fixes background in tmux...)
+set t_ut=
 " }}}
 
 " Spaces and tabs {{{
