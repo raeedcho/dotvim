@@ -132,6 +132,10 @@ set hlsearch " highlight matches
 set ignorecase " ignore case
 set smartcase " ignore case when all lower, but pay attention when some caps
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Set add all subdirectories to path
+set path +=**
+set wildmenu
 "}}}
 
 " Folding {{{
