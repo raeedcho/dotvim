@@ -129,6 +129,10 @@ let g:airline#extensions#tabline#enabled = 1 " display all buffers when there's 
 let g:airline_theme='ubaryd'
 " }}}
 
+" Gitgutter configuration {{{
+set updatetime=100 " 100 ms update time
+" }}}
+
 " Searching {{{
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
