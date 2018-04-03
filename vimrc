@@ -131,6 +131,7 @@ let g:airline_theme='ubaryd'
 
 " Gitgutter configuration {{{
 set updatetime=100 " 100 ms update time
+let g:gitgutter_highlight_lines = 1
 " }}}
 
 " Searching {{{
