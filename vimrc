@@ -252,9 +252,10 @@ autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
 "}}}
 
 " Syntastic stuff {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Statusline (this is done by airline automatically)
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
