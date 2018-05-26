@@ -23,7 +23,7 @@ nnoremap <leader>j :bprevious<CR>
 nnoremap <leader>k :bnext<CR>
 nnoremap <leader>h :bfirst<CR>
 nnoremap <leader>l :blast<CR>
-" nnoremap <leader>b :b#<CR>
+nnoremap <leader>; :b#<CR>
 
 " Edit vimrc easily
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
