@@ -70,6 +70,11 @@ syntax enable " enable syntax processing
 
 " use current background color (fixes background in tmux...)
 set t_ut=
+
+" get italics to work in tmux?
+" let &t_ZH="\e[3m"
+" let &t_ZR="\e[23m"
+
 " }}}
 
 " Spaces and tabs {{{
