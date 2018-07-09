@@ -55,3 +55,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "bundle/tslime.vim"]
+	path = bundle/tslime.vim
+	url = https://github.com/jgdavey/tslime.vim
