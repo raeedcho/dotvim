@@ -268,5 +268,10 @@ nnoremap <leader>n :lnext<CR>
 nnoremap <leader>N :lprevious<CR>
 "}}}
 
+" TSlime stuff {{{
+vnoremap <leader>c <Plug>SendSelectionToTmux
+nnoremap <leader>cc V<Plug>SendSelectionToTmux
+" }}}
+
 " Set modelines to 0
 set modelines=0
