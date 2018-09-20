@@ -126,7 +126,7 @@ set splitright
 " Airline configuration {{{
 set laststatus=2 " Always show airline bar
 let g:airline_powerline_fonts = 1 " Use powerline symbols for airline
-let g:airline#extensions#tabline#enabled = 1 " display all buffers when there's only one tab open
+"let g:airline#extensions#tabline#enabled = 1 " display all buffers when there's only one tab open
 let g:airline_theme='ubaryd'
 " }}}
 
