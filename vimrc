@@ -14,15 +14,17 @@ Helptags " Generate Helptags
 let mapleader = "\<Space>"
 nnoremap <leader>u :GundoToggle<CR>
 
+nnoremap <leader>t :TagbarToggle<CR>
+
 " remap escape to something easier
 inoremap jk <ESC>
 inoremap <ESC> <nop>
 
 " More natural movement between buffers
-nnoremap <leader>j :bprevious<CR>
-nnoremap <leader>k :bnext<CR>
-nnoremap <leader>h :bfirst<CR>
-nnoremap <leader>l :blast<CR>
+" nnoremap <leader>j :bprevious<CR>
+" nnoremap <leader>k :bnext<CR>
+" nnoremap <leader>h :bfirst<CR>
+" nnoremap <leader>l :blast<CR>
 nnoremap <leader>; :b#<CR>
 
 " Edit vimrc easily
@@ -133,7 +135,7 @@ let g:airline_theme='ubaryd'
 " Gitgutter configuration {{{
 set updatetime=100 " 100 ms update time
 let g:gitgutter_highlight_lines = 0
-nnoremap <leader>t :GitGutterLineHighlightsToggle<CR>
+nnoremap <leader>l :GitGutterLineHighlightsToggle<CR>
 " }}}
 
 " Searching {{{
@@ -193,9 +195,10 @@ set history=50		" keep 50 lines of command line history
 " }}}
 
 " Vimwiki stuff {{{
-let g:vimwiki_list = [{'path': '$HOME/Wiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '$HOME/Wiki', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1}]
 let g:vimwiki_dir_link = 'index' "automatically resolve folder links as folder/index.md
 let g:vimwiki_hl_headers = 1 "highlight headers with different colors
+let g:vimwiki_hl_cb_checked = 1 " highlight checked list lines
 
 " Link handling
 function! VimwikiLinkHandler(link)
