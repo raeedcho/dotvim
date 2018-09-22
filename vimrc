@@ -125,6 +125,14 @@ set splitbelow
 set splitright
 "}}}
 
+" Templates {{{
+if has("autocmd")
+    augroup templates
+        autocmd BufNewFile *Notes.md 0r ~/.vim/templates/ProjTemplate.md
+    augroup end
+endif
+" }}}
+
 " Airline configuration {{{
 set laststatus=2 " Always show airline bar
 let g:airline_powerline_fonts = 1 " Use powerline symbols for airline
