@@ -140,6 +140,14 @@ let g:airline_powerline_fonts = 1 " Use powerline symbols for airline
 let g:airline_theme='ubaryd'
 " }}}
 
+" NetRW struff {{{
+"let g:netrw_liststyle = 3 " get a tree view
+let g:netrw_banner = 0 " remove top banner
+let g:netrw_winsize = 25 " set to 25% of width
+let g:netrw_browse_split = 4 " Open file in previous window
+nnoremap <leader>v :Vexplore<CR>
+" }}}
+
 " Gitgutter configuration {{{
 set updatetime=100 " 100 ms update time
 let g:gitgutter_highlight_lines = 0
