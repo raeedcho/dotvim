@@ -144,8 +144,9 @@ let g:airline_theme='ubaryd'
 "let g:netrw_liststyle = 3 " get a tree view
 let g:netrw_banner = 0 " remove top banner
 let g:netrw_winsize = 25 " set to 25% of width
-let g:netrw_browse_split = 4 " Open file in previous window
+" let g:netrw_browse_split = 4 " Open file in previous window
 nnoremap <leader>v :Vexplore<CR>
+nnoremap <leader>x :Explore<CR>
 " }}}
 
 " Gitgutter configuration {{{
