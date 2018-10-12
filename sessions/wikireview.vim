@@ -8,6 +8,7 @@ nnoremap  
 nnoremap <NL> <NL>
 nnoremap  
 nnoremap  
+nmap <silent>  w m <Plug>VimwikiMakeTomorrowDiaryNote
 nmap <silent>  w y <Plug>VimwikiMakeYesterdayDiaryNote
 nmap <silent>  w t <Plug>VimwikiTabMakeDiaryNote
 nmap <silent>  w w <Plug>VimwikiMakeDiaryNote
@@ -16,10 +17,6 @@ nmap <silent>  wi <Plug>VimwikiDiaryIndex
 nmap <silent>  ws <Plug>VimwikiUISelect
 nmap <silent>  wt <Plug>VimwikiTabIndex
 nmap <silent>  ww <Plug>VimwikiIndex
-nmap  hp <Plug>GitGutterPreviewHunk
-nmap  hr <Plug>GitGutterUndoHunk:echomsg ' hr is deprecated. Use  hu'
-nmap  hu <Plug>GitGutterUndoHunk
-nmap  hs <Plug>GitGutterStageHunk
 nmap  cc V <Plug>SendSelectionToTmux
 vmap  c <Plug>SendSelectionToTmux
 nnoremap  N :lprevious
@@ -43,10 +40,6 @@ nnoremap  ; :b#
 nnoremap  t :TagbarToggle
 nnoremap  u :GundoToggle
 xmap S <Plug>VSurround
-nmap [c <Plug>GitGutterPrevHunk
-nmap ]c <Plug>GitGutterNextHunk
-xmap ac <Plug>GitGutterTextObjectOuterVisual
-omap ac <Plug>GitGutterTextObjectOuterPending
 nmap cS <Plug>CSurround
 nmap cs <Plug>Csurround
 nmap ds <Plug>Dsurround
@@ -54,8 +47,6 @@ vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 xmap gS <Plug>VgSurround
 nnoremap gV `[v`]
-xmap ic <Plug>GitGutterTextObjectInnerVisual
-omap ic <Plug>GitGutterTextObjectInnerPending
 vnoremap j gj
 nnoremap j gj
 vnoremap k gk
@@ -77,8 +68,7 @@ xnoremap <silent> <Plug>GitGutterTextObjectOuterVisual :call gitgutter#hunk#te
 xnoremap <silent> <Plug>GitGutterTextObjectInnerVisual :call gitgutter#hunk#text_object(1)
 onoremap <silent> <Plug>GitGutterTextObjectOuterPending :call gitgutter#hunk#text_object(0)
 onoremap <silent> <Plug>GitGutterTextObjectInnerPending :call gitgutter#hunk#text_object(1)
-nnoremap <SNR>41_: :=v:count ? v:count : ''
-nmap <silent> <Plug>NormalModeSendToTmux vip <Plug>SendSelectionToTmux
+nmap <silent> <Plug>NormalModeSendToTmux vip<Plug>SendSelectionToTmux
 vnoremap <silent> <Plug>SendSelectionToTmux "ry :call Send_to_Tmux(@r)
 xnoremap <silent> <Plug>(Limelight) :Limelight
 nnoremap <silent> <Plug>(Limelight) :set opfunc=limelight#operatorg@
@@ -96,7 +86,7 @@ set backupdir=~/.cache/vim/backup//
 set directory=~/.cache/vim/swap//
 set expandtab
 set fileencodings=ucs-bom,utf-8,default,latin1
-set formatlistpat=^\\s*\\%(\\(\\*\\|+\\|-\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX]\\)\\]\\s\\)\\?
+set formatlistpat=^\\s*\\%(\\(-\\|\\*\\|+\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX-]\\)\\]\\s\\)\\?
 set helplang=en
 set hidden
 set hlsearch
@@ -129,12 +119,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +8 Wiki/index.md
-badd +2 Wiki/ReviewTrigger.md
+badd +8 ~/Wiki/index.md
+badd +0 ~/Wiki/ReviewTrigger.md
 argglobal
 silent! argdel *
-$argadd Wiki/index.md
-edit Wiki/ReviewTrigger.md
+edit ~/Wiki/ReviewTrigger.md
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -161,30 +150,43 @@ nmap <buffer> <silent>  wr <Plug>VimwikiRenameLink
 nmap <buffer> <silent>  wd <Plug>VimwikiDeleteLink
 nmap <buffer>  whh <Plug>Vimwiki2HTMLBrowse
 nmap <buffer>  wh <Plug>Vimwiki2HTML
+nmap <buffer>  hp <Plug>GitGutterPreviewHunk
+nmap <buffer>  hu <Plug>GitGutterUndoHunk
+nmap <buffer>  hs <Plug>GitGutterStageHunk
 vmap <buffer> <silent> + <Plug>VimwikiNormalizeLinkVisual
 nmap <buffer> <silent> + <Plug>VimwikiNormalizeLink
 nmap <buffer> <silent> - <Plug>VimwikiRemoveHeaderLevel
 nmap <buffer> <silent> <D-CR> <Plug>VimwikiTabnewLink
 nmap <buffer> <silent> = <Plug>VimwikiAddHeaderLevel
-nnoremap <buffer> <silent> O :call vimwiki#lst#kbd_O()
+nnoremap <buffer> <silent> O :call vimwiki#lst#kbd_O()
+nmap <buffer> <silent> [= <Plug>VimwikiGoToPrevSiblingHeader
+nmap <buffer> <silent> [[ <Plug>VimwikiGoToPrevHeader
+nmap <buffer> <silent> [u <Plug>VimwikiGoToParentHeader
+nmap <buffer> [c <Plug>GitGutterPrevHunk
+nmap <buffer> <silent> ]= <Plug>VimwikiGoToNextSiblingHeader
+nmap <buffer> <silent> ]] <Plug>VimwikiGoToNextHeader
+nmap <buffer> <silent> ]u <Plug>VimwikiGoToParentHeader
+nmap <buffer> ]c <Plug>GitGutterNextHunk
 vnoremap <buffer> <silent> al :call vimwiki#lst#TO_list_item(0, 1)
 onoremap <buffer> <silent> al :call vimwiki#lst#TO_list_item(0, 0)
-vnoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 1)
-onoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 0)
 vnoremap <buffer> <silent> a\ :call vimwiki#base#TO_table_cell(0, 1)
 onoremap <buffer> <silent> a\ :call vimwiki#base#TO_table_cell(0, 0)
-vnoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 1)
-onoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 0)
+vnoremap <buffer> <silent> aH :call vimwiki#base#TO_header(0, 1, v:count1)
+onoremap <buffer> <silent> aH :call vimwiki#base#TO_header(0, 1, v:count1)
+vnoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 0, v:count1)
+onoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 0, v:count1)
+vnoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 1)
+onoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 0)
 nnoremap <buffer> gww :VimwikiTableAlignW
 nnoremap <buffer> gqq :VimwikiTableAlignQ
 noremap <buffer> <silent> gL1 :VimwikiChangeSymbolInListTo 1.
 noremap <buffer> <silent> gl1 :VimwikiChangeSymbolTo 1.
-noremap <buffer> <silent> gL- :VimwikiChangeSymbolInListTo -
-noremap <buffer> <silent> gl- :VimwikiChangeSymbolTo -
 noremap <buffer> <silent> gL+ :VimwikiChangeSymbolInListTo +
 noremap <buffer> <silent> gl+ :VimwikiChangeSymbolTo +
-noremap <buffer> <silent> gL* :VimwikiChangeSymbolInListTo *
-noremap <buffer> <silent> gl* :VimwikiChangeSymbolTo *
+noremap <buffer> <silent> gL\* :VimwikiChangeSymbolInListTo \*
+noremap <buffer> <silent> gl\* :VimwikiChangeSymbolTo \*
+noremap <buffer> <silent> gL- :VimwikiChangeSymbolInListTo -
+noremap <buffer> <silent> gl- :VimwikiChangeSymbolTo -
 map <buffer> <silent> gL  <Plug>VimwikiRemoveCBInList
 map <buffer> <silent> gl  <Plug>VimwikiRemoveSingleCB
 map <buffer> <silent> gLL <Plug>VimwikiIncreaseLvlWholeItem
@@ -196,15 +198,28 @@ map <buffer> <silent> glh <Plug>VimwikiDecreaseLvlSingleItem
 nmap <buffer> <silent> gLR <Plug>VimwikiRenumberAllLists
 nmap <buffer> <silent> gLr <Plug>VimwikiRenumberAllLists
 nmap <buffer> <silent> glr <Plug>VimwikiRenumberList
+vmap <buffer> <silent> glp <Plug>VimwikiDecrementListItem
+nmap <buffer> <silent> glp <Plug>VimwikiDecrementListItem
+vmap <buffer> <silent> gln <Plug>VimwikiIncrementListItem
+nmap <buffer> <silent> gln <Plug>VimwikiIncrementListItem
+vmap <buffer> <silent> glx <Plug>VimwikiToggleRejectedListItem
+nmap <buffer> <silent> glx <Plug>VimwikiToggleRejectedListItem
 vnoremap <buffer> <silent> il :call vimwiki#lst#TO_list_item(1, 1)
 onoremap <buffer> <silent> il :call vimwiki#lst#TO_list_item(1, 0)
-vnoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 1)
-onoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 0)
 vnoremap <buffer> <silent> i\ :call vimwiki#base#TO_table_cell(1, 1)
 onoremap <buffer> <silent> i\ :call vimwiki#base#TO_table_cell(1, 0)
-vnoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 1)
-onoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 0)
-nnoremap <buffer> <silent> o :call vimwiki#lst#kbd_o()
+vnoremap <buffer> <silent> iH :call vimwiki#base#TO_header(1, 1, v:count1)
+onoremap <buffer> <silent> iH :call vimwiki#base#TO_header(1, 1, v:count1)
+vnoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 0, v:count1)
+onoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 0, v:count1)
+vnoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 1)
+onoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 0)
+nnoremap <buffer> <silent> o :call vimwiki#lst#kbd_o()
+nnoremap <buffer> <silent> <Plug>VimwikiGoToPrevSiblingHeader :call vimwiki#base#goto_sibling(-1)
+nnoremap <buffer> <silent> <Plug>VimwikiGoToNextSiblingHeader :call vimwiki#base#goto_sibling(+1)
+nnoremap <buffer> <silent> <Plug>VimwikiGoToPrevHeader :call vimwiki#base#goto_prev_header()
+nnoremap <buffer> <silent> <Plug>VimwikiGoToNextHeader :call vimwiki#base#goto_next_header()
+nnoremap <buffer> <silent> <Plug>VimwikiGoToParentHeader :call vimwiki#base#goto_parent_header()
 nnoremap <buffer> <silent> <Plug>VimwikiRemoveHeaderLevel :call vimwiki#base#RemoveHeaderLevel()
 nnoremap <buffer> <silent> <Plug>VimwikiAddHeaderLevel :call vimwiki#base#AddHeaderLevel()
 nmap <buffer> <silent> <M-Right> <Plug>VimwikiTableMoveColumnRight
@@ -292,7 +307,7 @@ setlocal foldnestmax=10
 setlocal foldtext=foldtext()
 setlocal formatexpr=
 setlocal formatoptions=tqn
-setlocal formatlistpat=^\\s*\\%(\\(\\*\\|+\\|-\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX]\\)\\]\\s\\)\\?
+setlocal formatlistpat=^\\s*\\%(\\(-\\|\\*\\|+\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX-]\\)\\]\\s\\)\\?
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
@@ -362,15 +377,15 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 38) / 76)
+let s:l = 1 - ((0 * winheight(0) + 38) / 76)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
+1
 normal! 0
 wincmd w
 argglobal
-if bufexists('Wiki/index.md') | buffer Wiki/index.md | else | edit Wiki/index.md | endif
+if bufexists('~/Wiki/index.md') | buffer ~/Wiki/index.md | else | edit ~/Wiki/index.md | endif
 let s:cpo_save=&cpo
 set cpo&vim
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
@@ -384,30 +399,43 @@ nmap <buffer> <silent>  wr <Plug>VimwikiRenameLink
 nmap <buffer> <silent>  wd <Plug>VimwikiDeleteLink
 nmap <buffer>  whh <Plug>Vimwiki2HTMLBrowse
 nmap <buffer>  wh <Plug>Vimwiki2HTML
+nmap <buffer>  hp <Plug>GitGutterPreviewHunk
+nmap <buffer>  hu <Plug>GitGutterUndoHunk
+nmap <buffer>  hs <Plug>GitGutterStageHunk
 vmap <buffer> <silent> + <Plug>VimwikiNormalizeLinkVisual
 nmap <buffer> <silent> + <Plug>VimwikiNormalizeLink
 nmap <buffer> <silent> - <Plug>VimwikiRemoveHeaderLevel
 nmap <buffer> <silent> <D-CR> <Plug>VimwikiTabnewLink
 nmap <buffer> <silent> = <Plug>VimwikiAddHeaderLevel
-nnoremap <buffer> <silent> O :call vimwiki#lst#kbd_O()
+nnoremap <buffer> <silent> O :call vimwiki#lst#kbd_O()
+nmap <buffer> <silent> [= <Plug>VimwikiGoToPrevSiblingHeader
+nmap <buffer> <silent> [[ <Plug>VimwikiGoToPrevHeader
+nmap <buffer> <silent> [u <Plug>VimwikiGoToParentHeader
+nmap <buffer> [c <Plug>GitGutterPrevHunk
+nmap <buffer> <silent> ]= <Plug>VimwikiGoToNextSiblingHeader
+nmap <buffer> <silent> ]] <Plug>VimwikiGoToNextHeader
+nmap <buffer> <silent> ]u <Plug>VimwikiGoToParentHeader
+nmap <buffer> ]c <Plug>GitGutterNextHunk
 vnoremap <buffer> <silent> al :call vimwiki#lst#TO_list_item(0, 1)
 onoremap <buffer> <silent> al :call vimwiki#lst#TO_list_item(0, 0)
-vnoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 1)
-onoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 0)
 vnoremap <buffer> <silent> a\ :call vimwiki#base#TO_table_cell(0, 1)
 onoremap <buffer> <silent> a\ :call vimwiki#base#TO_table_cell(0, 0)
-vnoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 1)
-onoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 0)
+vnoremap <buffer> <silent> aH :call vimwiki#base#TO_header(0, 1, v:count1)
+onoremap <buffer> <silent> aH :call vimwiki#base#TO_header(0, 1, v:count1)
+vnoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 0, v:count1)
+onoremap <buffer> <silent> ah :call vimwiki#base#TO_header(0, 0, v:count1)
+vnoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 1)
+onoremap <buffer> <silent> ac :call vimwiki#base#TO_table_col(0, 0)
 nnoremap <buffer> gww :VimwikiTableAlignW
 nnoremap <buffer> gqq :VimwikiTableAlignQ
 noremap <buffer> <silent> gL1 :VimwikiChangeSymbolInListTo 1.
 noremap <buffer> <silent> gl1 :VimwikiChangeSymbolTo 1.
-noremap <buffer> <silent> gL- :VimwikiChangeSymbolInListTo -
-noremap <buffer> <silent> gl- :VimwikiChangeSymbolTo -
 noremap <buffer> <silent> gL+ :VimwikiChangeSymbolInListTo +
 noremap <buffer> <silent> gl+ :VimwikiChangeSymbolTo +
-noremap <buffer> <silent> gL* :VimwikiChangeSymbolInListTo *
-noremap <buffer> <silent> gl* :VimwikiChangeSymbolTo *
+noremap <buffer> <silent> gL\* :VimwikiChangeSymbolInListTo \*
+noremap <buffer> <silent> gl\* :VimwikiChangeSymbolTo \*
+noremap <buffer> <silent> gL- :VimwikiChangeSymbolInListTo -
+noremap <buffer> <silent> gl- :VimwikiChangeSymbolTo -
 map <buffer> <silent> gL  <Plug>VimwikiRemoveCBInList
 map <buffer> <silent> gl  <Plug>VimwikiRemoveSingleCB
 map <buffer> <silent> gLL <Plug>VimwikiIncreaseLvlWholeItem
@@ -419,15 +447,28 @@ map <buffer> <silent> glh <Plug>VimwikiDecreaseLvlSingleItem
 nmap <buffer> <silent> gLR <Plug>VimwikiRenumberAllLists
 nmap <buffer> <silent> gLr <Plug>VimwikiRenumberAllLists
 nmap <buffer> <silent> glr <Plug>VimwikiRenumberList
+vmap <buffer> <silent> glp <Plug>VimwikiDecrementListItem
+nmap <buffer> <silent> glp <Plug>VimwikiDecrementListItem
+vmap <buffer> <silent> gln <Plug>VimwikiIncrementListItem
+nmap <buffer> <silent> gln <Plug>VimwikiIncrementListItem
+vmap <buffer> <silent> glx <Plug>VimwikiToggleRejectedListItem
+nmap <buffer> <silent> glx <Plug>VimwikiToggleRejectedListItem
 vnoremap <buffer> <silent> il :call vimwiki#lst#TO_list_item(1, 1)
 onoremap <buffer> <silent> il :call vimwiki#lst#TO_list_item(1, 0)
-vnoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 1)
-onoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 0)
 vnoremap <buffer> <silent> i\ :call vimwiki#base#TO_table_cell(1, 1)
 onoremap <buffer> <silent> i\ :call vimwiki#base#TO_table_cell(1, 0)
-vnoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 1)
-onoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 0)
-nnoremap <buffer> <silent> o :call vimwiki#lst#kbd_o()
+vnoremap <buffer> <silent> iH :call vimwiki#base#TO_header(1, 1, v:count1)
+onoremap <buffer> <silent> iH :call vimwiki#base#TO_header(1, 1, v:count1)
+vnoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 0, v:count1)
+onoremap <buffer> <silent> ih :call vimwiki#base#TO_header(1, 0, v:count1)
+vnoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 1)
+onoremap <buffer> <silent> ic :call vimwiki#base#TO_table_col(1, 0)
+nnoremap <buffer> <silent> o :call vimwiki#lst#kbd_o()
+nnoremap <buffer> <silent> <Plug>VimwikiGoToPrevSiblingHeader :call vimwiki#base#goto_sibling(-1)
+nnoremap <buffer> <silent> <Plug>VimwikiGoToNextSiblingHeader :call vimwiki#base#goto_sibling(+1)
+nnoremap <buffer> <silent> <Plug>VimwikiGoToPrevHeader :call vimwiki#base#goto_prev_header()
+nnoremap <buffer> <silent> <Plug>VimwikiGoToNextHeader :call vimwiki#base#goto_next_header()
+nnoremap <buffer> <silent> <Plug>VimwikiGoToParentHeader :call vimwiki#base#goto_parent_header()
 nnoremap <buffer> <silent> <Plug>VimwikiRemoveHeaderLevel :call vimwiki#base#RemoveHeaderLevel()
 nnoremap <buffer> <silent> <Plug>VimwikiAddHeaderLevel :call vimwiki#base#AddHeaderLevel()
 nmap <buffer> <silent> <M-Right> <Plug>VimwikiTableMoveColumnRight
@@ -515,7 +556,7 @@ setlocal foldnestmax=10
 setlocal foldtext=foldtext()
 setlocal formatexpr=
 setlocal formatoptions=tqn
-setlocal formatlistpat=^\\s*\\%(\\(\\*\\|+\\|-\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX]\\)\\]\\s\\)\\?
+setlocal formatlistpat=^\\s*\\%(\\(-\\|\\*\\|+\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX-]\\)\\]\\s\\)\\?
 setlocal formatprg=
 setlocal grepprg=
 setlocal iminsert=0
