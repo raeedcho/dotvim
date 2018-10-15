@@ -12,6 +12,7 @@ Helptags " Generate Helptags
 
 " Leader shortcuts {{{
 let mapleader = "\<Space>"
+let maplocalleader = ","
 nnoremap <leader>u :GundoToggle<CR>
 
 nnoremap <leader>t :TagbarToggle<CR>
@@ -270,6 +271,17 @@ let g:limelight_eop = '\ze\n'
 nnoremap <leader>g :Goyo<CR>
 autocmd! User GoyoEnter Limelight | set so=999 | set wrap | set linebreak
 autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
+"}}}
+
+" Pandoc stuff {{{
+" execute :Pandoc on writes
+let g:pandoc#command#autoexec_on_writes = 0
+let g:pandoc#command#autoexec_command = "Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos"
+" pandoc calls shortcuts
+nnoremap <localleader>w :Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos<CR>
+nnoremap <localleader>e :Pandoc docx --filter pandoc-eqnos --filter pandoc-fignos<CR>
+" bibliography stuff...
+let g:pandoc#biblio#bibs = ["~/Documents/LitLib/library.bib"]
 "}}}
 
 " Syntastic stuff {{{
