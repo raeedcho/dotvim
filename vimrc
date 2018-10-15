@@ -274,6 +274,9 @@ autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
 "}}}
 
 " Pandoc stuff {{{
+" opt out for markdown
+let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#filetypes#handled = ["pandoc"]
 " execute :Pandoc on writes
 let g:pandoc#command#autoexec_on_writes = 0
 let g:pandoc#command#autoexec_command = "Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos"
