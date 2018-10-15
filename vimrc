@@ -281,7 +281,8 @@ let g:pandoc#command#autoexec_command = "Pandoc pdf --filter pandoc-eqnos --filt
 nnoremap <localleader>w :Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos<CR>
 nnoremap <localleader>e :Pandoc docx --filter pandoc-eqnos --filter pandoc-fignos<CR>
 " bibliography stuff...
-let g:pandoc#biblio#bibs = ["~/Documents/LitLib/library.bib"]
+let g:pandoc#biblio#bibs = ["~/Documents/LitLib/LitLibRaeed.bib"]
+let g:pandoc#completion#bib#mode = 'citeproc'
 "}}}
 
 " Syntastic stuff {{{
