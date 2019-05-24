@@ -130,6 +130,7 @@ set splitright
 if has("autocmd")
     augroup templates
         autocmd BufNewFile *Notes.md 0r ~/.vim/templates/ProjTemplate.md
+        autocmd BufNewFile *-notes.md 0r ~/.vim/templates/ProjTemplate.md
     augroup end
 endif
 " }}}
