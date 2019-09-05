@@ -84,8 +84,14 @@ set expandtab " tabs are spaces
 " }}}
 
 " UI Config {{{
-set relativenumber " set relative number in gutter
-set number " set line number for current line in gutter
+set number relativenumber " set relative/absolute hybrid number in gutter
+if has("autocmd")
+    augroup number_toggle " set relative/absolute number automatic toggle
+        autocmd!
+        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+        autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+    augroup END
+endif
 set showcmd " show command in bottom bar
 set cursorline " highlight current line
 set lazyredraw " redraw only when we need to
@@ -270,8 +276,31 @@ let g:limelight_eop = '\ze\n'
 
 " leader shortcut
 nnoremap <leader>g :Goyo<CR>
-autocmd! User GoyoEnter Limelight | set so=999 | set wrap | set linebreak
-autocmd! User GoyoLeave Limelight! | set so=0 | set nowrap
+
+" autocommands for entering and exiting Goyo
+function! s:goyo_enter()
+    augroup number_toggle
+        autocmd!
+    augroup END
+    Limelight
+    set scrolloff=999
+    set wrap
+    set linebreak
+    set norelativenumber
+endfunction
+function! s:goyo_leave()
+    augroup number_toggle
+        autocmd!
+        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+        autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+    augroup END
+    Limelight!
+    set scrolloff=0
+    set nowrap
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "}}}
 
 " Pandoc stuff {{{
