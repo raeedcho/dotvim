@@ -37,6 +37,9 @@ noremap <leader>d "+d
 noremap <leader>y "+y
 noremap <leader>p "+p
 
+" New line starting with date in parentheticals
+nnoremap <leader>o o<C-R>=strftime("(%Y/%m/%d)")<CR><Space>
+
 " Allow changing between buffers with unsaved changes
 set hidden
 
@@ -53,7 +56,7 @@ call denite#custom#map('insert', '<Esc>', '<NOP>',
 call denite#custom#map('normal', '<Esc>', '<NOP>',
     \'noremap')
 " nnoremap <leader>o :<C-u>Denite -split=no file_rec<CR>
-nnoremap <leader>o :<C-u>Denite file_rec<CR>
+nnoremap <leader>ef :<C-u>Denite file_rec<CR>
 " nnoremap <leader>b :<C-u>Denite -split=no -mode=normal buffer<CR>
 nnoremap <leader>b :<C-u>Denite buffer<CR>
 nnoremap <leader>/ :<C-u>Denite line:buffers<CR>
