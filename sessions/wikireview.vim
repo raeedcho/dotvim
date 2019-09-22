@@ -30,7 +30,8 @@ nnoremap  \ :Denite grep:. -mode=normal
 nnoremap  * :DeniteCursorWord grep:. -mode=normal
 nnoremap  / :Denite line:buffers
 nnoremap  b :Denite buffer
-nnoremap  o :Denite file_rec
+nnoremap  ef :Denite file_rec
+nnoremap  o o=strftime("(%Y/%m/%d)") 
 noremap  p "+p
 noremap  y "+y
 noremap  d "+d
@@ -39,6 +40,8 @@ nnoremap  ev :vsplit $MYVIMRC
 nnoremap  ; :b#
 nnoremap  t :TagbarToggle
 nnoremap  u :GundoToggle
+nnoremap ,e :Pandoc docx --filter pandoc-eqnos --filter pandoc-fignos
+nnoremap ,w :Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos
 xmap S <Plug>VSurround
 nmap cS <Plug>CSurround
 nmap cs <Plug>Csurround
@@ -57,7 +60,7 @@ nmap yss <Plug>Yssurround
 nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 nnoremap <silent> <Plug>SurroundRepeat .
 nnoremap <silent> <Plug>GitGutterPreviewHunk :GitGutterPreviewHunk
 nnoremap <silent> <Plug>GitGutterUndoHunk :GitGutterUndoHunk
@@ -97,7 +100,7 @@ set lazyredraw
 set modelines=0
 set path=.,/usr/include,,,**
 set ruler
-set runtimepath=~/.vim,~/.vim/bundle/Apprentice,~/.vim/bundle/delimitMate,~/.vim/bundle/denite.nvim,~/.vim/bundle/goyo.vim,~/.vim/bundle/gruvbox,~/.vim/bundle/gundo,~/.vim/bundle/limelight.vim,~/.vim/bundle/pathogen,~/.vim/bundle/railscasts-theme,~/.vim/bundle/syntastic,~/.vim/bundle/tagbar,~/.vim/bundle/tmuxline.vim,~/.vim/bundle/tslime.vim,~/.vim/bundle/vim-airline,~/.vim/bundle/vim-airline-themes,~/.vim/bundle/vim-fugitive,~/.vim/bundle/vim-gitgutter,~/.vim/bundle/vim-ledger,~/.vim/bundle/vim-repeat,~/.vim/bundle/vim-surround,~/.vim/bundle/vimwiki,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,~/.vim/after
+set runtimepath=~/.vim,~/.vim/bundle/Apprentice,~/.vim/bundle/delimitMate,~/.vim/bundle/denite.nvim,~/.vim/bundle/goyo.vim,~/.vim/bundle/gruvbox,~/.vim/bundle/gundo,~/.vim/bundle/limelight.vim,~/.vim/bundle/pathogen,~/.vim/bundle/railscasts-theme,~/.vim/bundle/syntastic,~/.vim/bundle/tagbar,~/.vim/bundle/tmuxline.vim,~/.vim/bundle/tslime.vim,~/.vim/bundle/vim-airline,~/.vim/bundle/vim-airline-themes,~/.vim/bundle/vim-fugitive,~/.vim/bundle/vim-gitgutter,~/.vim/bundle/vim-ledger,~/.vim/bundle/vim-pandoc,~/.vim/bundle/vim-pandoc-syntax,~/.vim/bundle/vim-repeat,~/.vim/bundle/vim-surround,~/.vim/bundle/vim-tmux-focus-events,~/.vim/bundle/vim-toml,~/.vim/bundle/vimwiki,/usr/share/vim/vimfiles,/usr/share/vim/vim81,/usr/share/vim/vimfiles/after,~/.vim/after
 set shiftwidth=4
 set showcmd
 set showmatch
@@ -119,11 +122,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +8 ~/Wiki/index.md
-badd +0 ~/Wiki/ReviewTrigger.md
 argglobal
-silent! argdel *
-edit ~/Wiki/ReviewTrigger.md
+%argdel
+edit Wiki/ReviewTrigger.md
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -134,8 +135,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 141 + 142) / 284)
-exe 'vert 2resize ' . ((&columns * 142 + 142) / 284)
+exe 'vert 1resize ' . ((&columns * 127 + 127) / 255)
+exe 'vert 2resize ' . ((&columns * 127 + 127) / 255)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -267,7 +268,7 @@ setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
 setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
@@ -315,7 +316,7 @@ setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
@@ -343,8 +344,10 @@ setlocal relativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -361,6 +364,7 @@ setlocal syntax=vimwiki
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=./tags,./TAGS,tags,TAGS,~/Wiki/.tags
 setlocal termwinkey=
 setlocal termwinscroll=10000
@@ -371,13 +375,14 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 38) / 76)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -385,7 +390,7 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-if bufexists('~/Wiki/index.md') | buffer ~/Wiki/index.md | else | edit ~/Wiki/index.md | endif
+if bufexists("~/Wiki/index.md") | buffer ~/Wiki/index.md | else | edit ~/Wiki/index.md | endif
 let s:cpo_save=&cpo
 set cpo&vim
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
@@ -516,7 +521,7 @@ setlocal bufhidden=
 setlocal buflisted
 setlocal buftype=
 setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
@@ -564,7 +569,7 @@ setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
 setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
@@ -592,8 +597,10 @@ setlocal relativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
+setlocal scrolloff=-1
 setlocal shiftwidth=4
 setlocal noshortname
+setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
@@ -610,6 +617,7 @@ setlocal syntax=vimwiki
 endif
 setlocal tabstop=4
 setlocal tagcase=
+setlocal tagfunc=
 setlocal tags=./tags,./TAGS,tags,TAGS,~/Wiki/.tags
 setlocal termwinkey=
 setlocal termwinscroll=10000
@@ -620,33 +628,37 @@ setlocal undofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 38) / 76)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 141 + 142) / 284)
-exe 'vert 2resize ' . ((&columns * 142 + 142) / 284)
+exe 'vert 1resize ' . ((&columns * 127 + 127) / 255)
+exe 'vert 2resize ' . ((&columns * 127 + 127) / 255)
 tabnext 1
+badd +1 ~/Wiki/index.md
+badd +0 Wiki/ReviewTrigger.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 shortmess=filnxtToO
+set winheight=1 winwidth=20 shortmess=filnxtToOS
 set winminheight=1 winminwidth=1
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
