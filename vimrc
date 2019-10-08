@@ -38,7 +38,7 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 
 " New line starting with date in parentheticals
-nnoremap <leader>o o<C-R>=strftime("(%Y/%m/%d)")<CR><Space>
+nnoremap <leader>o o<C-R>=strftime("(%Y/%m/%d %H:%M)")<CR><Space>
 
 " Allow changing between buffers with unsaved changes
 set hidden

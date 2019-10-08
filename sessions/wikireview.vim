@@ -31,7 +31,7 @@ nnoremap  * :DeniteCursorWord grep:. -mode=normal
 nnoremap  / :Denite line:buffers
 nnoremap  b :Denite buffer
 nnoremap  ef :Denite file_rec
-nnoremap  o o=strftime("(%Y/%m/%d)") 
+nnoremap  o o=strftime("(%Y/%m/%d %H:%M)") 
 noremap  p "+p
 noremap  y "+y
 noremap  d "+d
@@ -113,6 +113,7 @@ set undodir=~/.vim/.undo
 set undofile
 set updatetime=100
 set wildmenu
+set window=69
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -285,6 +286,7 @@ setlocal nocursorbind
 setlocal nocursorcolumn
 set cursorline
 setlocal cursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -382,11 +384,11 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+let s:l = 6 - ((5 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+6
 normal! 0
 wincmd w
 argglobal
@@ -538,6 +540,7 @@ setlocal nocursorbind
 setlocal nocursorcolumn
 set cursorline
 setlocal cursorline
+setlocal cursorlineopt=both
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -560,7 +563,7 @@ set foldnestmax=10
 setlocal foldnestmax=10
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tqn
+setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\%(\\(-\\|\\*\\|+\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX-]\\)\\]\\s\\)\\?
 setlocal formatprg=
 setlocal grepprg=
@@ -592,8 +595,7 @@ setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
-set relativenumber
-setlocal relativenumber
+setlocal norelativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
@@ -645,8 +647,8 @@ wincmd w
 exe 'vert 1resize ' . ((&columns * 127 + 127) / 255)
 exe 'vert 2resize ' . ((&columns * 127 + 127) / 255)
 tabnext 1
-badd +1 ~/Wiki/index.md
-badd +0 Wiki/ReviewTrigger.md
+badd +1 Wiki/ReviewTrigger.md
+badd +0 ~/Wiki/index.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -658,7 +660,6 @@ if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
