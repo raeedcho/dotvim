@@ -2,6 +2,9 @@ let SessionLoad = 1
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
+imap <C-G>S <Plug>ISurround
+imap <C-G>s <Plug>Isurround
+imap <C-S> <Plug>Isurround
 inoremap <silent> <expr> <Plug>delimitMateS-BS delimitMate#WithinEmptyPair() ? "\<Del>" : "\<S-BS>"
 inoremap <silent> <Plug>delimitMateBS =delimitMate#BS()
 nnoremap  
@@ -60,7 +63,7 @@ nmap yss <Plug>Yssurround
 nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
-nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
 nnoremap <silent> <Plug>SurroundRepeat .
 nnoremap <silent> <Plug>GitGutterPreviewHunk :GitGutterPreviewHunk
 nnoremap <silent> <Plug>GitGutterUndoHunk :GitGutterUndoHunk
@@ -75,6 +78,10 @@ nmap <silent> <Plug>NormalModeSendToTmux vip<Plug>SendSelectionToTmux
 vnoremap <silent> <Plug>SendSelectionToTmux "ry :call Send_to_Tmux(@r)
 xnoremap <silent> <Plug>(Limelight) :Limelight
 nnoremap <silent> <Plug>(Limelight) :set opfunc=limelight#operatorg@
+nnoremap <C-H> 
+nnoremap <C-L> 
+nnoremap <C-K> 
+nnoremap <C-J> <NL>
 imap S <Plug>ISurround
 imap s <Plug>Isurround
 imap  <Plug>Isurround
@@ -113,7 +120,6 @@ set undodir=~/.vim/.undo
 set undofile
 set updatetime=100
 set wildmenu
-set window=69
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
@@ -125,7 +131,7 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit Wiki/ReviewTrigger.md
+edit Wiki/review-trigger.md
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -141,9 +147,16 @@ exe 'vert 2resize ' . ((&columns * 127 + 127) / 255)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <silent> <C-G>g <Plug>delimitMateJumpMany
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <C-H> <Plug>delimitMateBS
 imap <buffer> <BS> <Plug>delimitMateBS
 inoremap <buffer> <silent> <S-CR> :VimwikiReturn 2 2
+imap <buffer> <silent> <C-L><C-M> <Plug>VimwikiListToggle
+imap <buffer> <silent> <C-L><C-K> <Plug>VimwikiListPrevSymbol
+imap <buffer> <silent> <C-L><C-J> <Plug>VimwikiListNextSymbol
+imap <buffer> <silent> <C-T> <Plug>VimwikiIncreaseLvlSingleItem
+imap <buffer> <silent> <C-D> <Plug>VimwikiDecreaseLvlSingleItem
 inoremap <buffer> <expr> <S-Tab> vimwiki#tbl#kbd_shift_tab()
 nmap <buffer> <silent> 	 <Plug>VimwikiNextLink
 vmap <buffer> <silent>  <Plug>VimwikiNormalizeLinkVisualCR
@@ -226,7 +239,9 @@ nnoremap <buffer> <silent> <Plug>VimwikiRemoveHeaderLevel :call vimwiki#base#R
 nnoremap <buffer> <silent> <Plug>VimwikiAddHeaderLevel :call vimwiki#base#AddHeaderLevel()
 nmap <buffer> <silent> <M-Right> <Plug>VimwikiTableMoveColumnRight
 nmap <buffer> <silent> <M-Left> <Plug>VimwikiTableMoveColumnLeft
+vmap <buffer> <silent> <C-@> <Plug>VimwikiToggleListItem
 vmap <buffer> <silent> <Nul> <Plug>VimwikiToggleListItem
+nmap <buffer> <silent> <C-@> <Plug>VimwikiToggleListItem
 nmap <buffer> <silent> <Nul> <Plug>VimwikiToggleListItem
 vmap <buffer> <silent> <C-Space> <Plug>VimwikiToggleListItem
 nmap <buffer> <silent> <C-Space> <Plug>VimwikiToggleListItem
@@ -384,20 +399,27 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 34) / 68)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
+1
 normal! 0
 wincmd w
 argglobal
 if bufexists("~/Wiki/index.md") | buffer ~/Wiki/index.md | else | edit ~/Wiki/index.md | endif
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <silent> <C-G>g <Plug>delimitMateJumpMany
 imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <C-H> <Plug>delimitMateBS
 imap <buffer> <BS> <Plug>delimitMateBS
 inoremap <buffer> <silent> <S-CR> :VimwikiReturn 2 2
+imap <buffer> <silent> <C-L><C-M> <Plug>VimwikiListToggle
+imap <buffer> <silent> <C-L><C-K> <Plug>VimwikiListPrevSymbol
+imap <buffer> <silent> <C-L><C-J> <Plug>VimwikiListNextSymbol
+imap <buffer> <silent> <C-T> <Plug>VimwikiIncreaseLvlSingleItem
+imap <buffer> <silent> <C-D> <Plug>VimwikiDecreaseLvlSingleItem
 inoremap <buffer> <expr> <S-Tab> vimwiki#tbl#kbd_shift_tab()
 nmap <buffer> <silent> 	 <Plug>VimwikiNextLink
 vmap <buffer> <silent>  <Plug>VimwikiNormalizeLinkVisualCR
@@ -480,7 +502,9 @@ nnoremap <buffer> <silent> <Plug>VimwikiRemoveHeaderLevel :call vimwiki#base#R
 nnoremap <buffer> <silent> <Plug>VimwikiAddHeaderLevel :call vimwiki#base#AddHeaderLevel()
 nmap <buffer> <silent> <M-Right> <Plug>VimwikiTableMoveColumnRight
 nmap <buffer> <silent> <M-Left> <Plug>VimwikiTableMoveColumnLeft
+vmap <buffer> <silent> <C-@> <Plug>VimwikiToggleListItem
 vmap <buffer> <silent> <Nul> <Plug>VimwikiToggleListItem
+nmap <buffer> <silent> <C-@> <Plug>VimwikiToggleListItem
 nmap <buffer> <silent> <Nul> <Plug>VimwikiToggleListItem
 vmap <buffer> <silent> <C-Space> <Plug>VimwikiToggleListItem
 nmap <buffer> <silent> <C-Space> <Plug>VimwikiToggleListItem
@@ -563,7 +587,7 @@ set foldnestmax=10
 setlocal foldnestmax=10
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=tcq
+setlocal formatoptions=tqn
 setlocal formatlistpat=^\\s*\\%(\\(-\\|\\*\\|+\\)\\|\\(\\C\\%(\\d\\+\\.\\)\\)\\)\\s\\+\\%(\\[\\([\ .oOX-]\\)\\]\\s\\)\\?
 setlocal formatprg=
 setlocal grepprg=
@@ -647,8 +671,8 @@ wincmd w
 exe 'vert 1resize ' . ((&columns * 127 + 127) / 255)
 exe 'vert 2resize ' . ((&columns * 127 + 127) / 255)
 tabnext 1
-badd +1 Wiki/ReviewTrigger.md
-badd +0 ~/Wiki/index.md
+badd +1 ~/Wiki/index.md
+badd +0 Wiki/review-trigger.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -660,6 +684,7 @@ if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
