@@ -186,7 +186,8 @@ set foldmethod=manual
 if has("autocmd")
     augroup vim_folding
         autocmd!
-        autocmd BufReadPre  ?* setlocal foldmethod=indent
+        autocmd BufReadPre ?* setlocal foldignore=
+        autocmd BufReadPre ?* setlocal foldmethod=indent
         autocmd FileType vim setlocal foldmethod=marker
         autocmd FileType ledger setlocal foldmethod=marker
         "au BufWinEnter ?* if &fdm == 'indent' | setlocal foldmethod=manual | endif
