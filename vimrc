@@ -29,7 +29,7 @@ inoremap <ESC> <nop>
 nnoremap <leader>; :b#<CR>
 
 " Edit vimrc easily
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Yank to system clipboard
@@ -255,7 +255,7 @@ endfunction
 let g:ledger_fillstring = '    -'
 let g:ledger_detailed_first = 1
 let g:ledger_fold_blanks = 0
-let g:ledger_align_at = 78
+let g:ledger_align_at = 62
 let g:ledger_extra_options = '--pedantic --explicit --check-payees'
 let g:ledger_default_commodity = '$'
 let g:ledger_commodity_sep = ' '
