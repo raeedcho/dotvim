@@ -340,6 +340,8 @@ nnoremap <leader>N :lprevious<CR>
 "}}}
 
 " TSlime stuff {{{
+let g:tslime_always_current_session = 1
+let g:tslime_always_current_window = 1
 vmap <leader>c <Plug>SendSelectionToTmux
 nmap <leader>cc V <Plug>SendSelectionToTmux
 " }}}
