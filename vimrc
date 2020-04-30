@@ -64,6 +64,14 @@ nnoremap <leader>* :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 nnoremap <leader>\ :<C-u>Denite grep:. -mode=normal<CR>
 " }}}
 
+" Spellchecking {{{
+" force reverse highlighting for spell check for all color schemes
+augroup SpellReverseHighlight
+    autocmd!
+    autocmd ColorScheme * highlight SpellBad cterm=reverse
+augroup END
+" }}}
+
 " Colors {{{
 " colorscheme railscasts
 " colorscheme ron
@@ -311,6 +319,9 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " opt out for markdown
 let g:pandoc#filetypes#pandoc_markdown = 0
 let g:pandoc#filetypes#handled = ["pandoc"]
+" spell checking
+let g:pandoc#spell#enabled = 1
+let g:pandoc#spell#default_langs = ["en_us"]
 " execute :Pandoc on writes
 let g:pandoc#command#autoexec_on_writes = 0
 let g:pandoc#command#autoexec_command = "Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos"
