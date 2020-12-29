@@ -4,7 +4,7 @@
 ## Motivation
 
 ## Success conditions
-* Conditions
+- Conditions
 
 ## Brainstorming
 
