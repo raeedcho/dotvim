@@ -9,6 +9,6 @@
 ## Brainstorming
 
 ## Actions
-* [ ] Action steps
+- [ ] Action steps
 
 ## Project support
