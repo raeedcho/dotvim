@@ -4,11 +4,11 @@
 ## Motivation
 
 ## Success conditions
-* Conditions
+- Conditions
 
 ## Brainstorming
 
 ## Actions
-* [ ] Action steps
+- [ ] Action steps
 
 ## Project support
