@@ -15,7 +15,6 @@ let mapleader = "\<Space>"
 let maplocalleader = ","
 nnoremap <leader>u :GundoToggle<CR>
 
-nnoremap <leader>t :TagbarToggle<CR>
 
 " remap escape to something easier
 inoremap jk <ESC>
@@ -46,6 +45,10 @@ set hidden
 " Set no line wrapping by default
 set nowrap
 
+"  }}}
+
+"  Tagbar {{{
+nnoremap <leader>t :TagbarToggle<CR>
 "  }}}
 
 " Denite {{{
