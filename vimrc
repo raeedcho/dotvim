@@ -73,7 +73,27 @@ augroup SpellReverseHighlight
     autocmd!
     autocmd ColorScheme * highlight SpellBad cterm=reverse
 augroup END
+
+nnoremap <leader>s :set spell!<CR>
 " }}}
+
+" Pandoc stuff {{{
+" opt out for markdown
+let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#filetypes#handled = ["pandoc"]
+" spell checking
+let g:pandoc#spell#enabled = 1
+let g:pandoc#spell#default_langs = ["en_us"]
+" execute :Pandoc on writes
+let g:pandoc#command#autoexec_on_writes = 0
+let g:pandoc#command#autoexec_command = "Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos"
+" pandoc calls shortcuts
+nnoremap <localleader>w :Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos<CR>
+nnoremap <localleader>e :Pandoc docx --filter pandoc-eqnos --filter pandoc-fignos<CR>
+" bibliography stuff...
+let g:pandoc#biblio#bibs = ["~/Documents/LitLib/LitLibRaeed.bib"]
+let g:pandoc#completion#bib#mode = 'citeproc'
+"}}}
 
 " Colors {{{
 " colorscheme railscasts
@@ -81,6 +101,7 @@ augroup END
 " colorscheme apprentice
 let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_undercurl=1
 colorscheme gruvbox
 set background=dark
 syntax enable " enable syntax processing
@@ -237,8 +258,9 @@ set history=50		" keep 50 lines of command line history
 " Vimwiki stuff {{{
 let g:vimwiki_list = [{'path': '$HOME/Wiki', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1}]
 let g:vimwiki_dir_link = 'index' "automatically resolve folder links as folder/index.md
-let g:vimwiki_hl_headers = 1 "highlight headers with different colors
+let g:vimwiki_hl_headers = 0 "highlight headers with different colors
 let g:vimwiki_hl_cb_checked = 1 " highlight checked list lines
+let g:vimwiki_global_ext = 0 " don't use vimwiki filetype for all .md files
 
 " Link handling
 function! VimwikiLinkHandler(link)
@@ -318,31 +340,13 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "}}}
 
-" Pandoc stuff {{{
-" opt out for markdown
-let g:pandoc#filetypes#pandoc_markdown = 0
-let g:pandoc#filetypes#handled = ["pandoc"]
-" spell checking
-let g:pandoc#spell#enabled = 1
-let g:pandoc#spell#default_langs = ["en_us"]
-" execute :Pandoc on writes
-let g:pandoc#command#autoexec_on_writes = 0
-let g:pandoc#command#autoexec_command = "Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos"
-" pandoc calls shortcuts
-nnoremap <localleader>w :Pandoc pdf --filter pandoc-eqnos --filter pandoc-fignos<CR>
-nnoremap <localleader>e :Pandoc docx --filter pandoc-eqnos --filter pandoc-fignos<CR>
-" bibliography stuff...
-let g:pandoc#biblio#bibs = ["~/Documents/LitLib/LitLibRaeed.bib"]
-let g:pandoc#completion#bib#mode = 'citeproc'
-"}}}
-
 " Syntastic stuff {{{
 " Statusline (this is done by airline automatically)
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
-let g:syntastic_matlab_mlint_exec = "/usr/local/MATLAB/R2019a/bin/glnxa64/mlint"
+let g:syntastic_matlab_mlint_exec = "/usr/local/MATLAB/R2021a/bin/glnxa64/mlint"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
