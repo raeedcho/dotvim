@@ -49,6 +49,16 @@ set nowrap
 
 "  Tagbar {{{
 nnoremap <leader>t :TagbarToggle<CR>
+
+" let g:tagbar_type_vimwiki = {
+"           \   'ctagstype':'vimwiki'
+"           \ , 'kinds':['h:header']
+"           \ , 'sro':'&&&'
+"           \ , 'kind2scope':{'h':'header'}
+"           \ , 'sort':0
+"           \ , 'ctagsbin':'/home/raeed/.vim/bundle/vwtags.py'
+"           \ , 'ctagsargs': 'markdown'
+"           \ }
 "  }}}
 
 " Denite {{{
@@ -346,7 +356,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
-let g:syntastic_matlab_mlint_exec = "/usr/local/MATLAB/R2021a/bin/glnxa64/mlint"
+let g:syntastic_matlab_mlint_exec = "~/bin/mlint"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
