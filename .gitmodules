@@ -74,8 +74,8 @@
 	path = bundle/vim-tmux-focus-events
 	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
 [submodule "bundles/nvim-yarp"]
-	path = bundles/nvim-yarp
+	path = bundle/nvim-yarp
 	url = https://github.com/roxma/nvim-yarp.git
 [submodule "bundles/vim-hug-neovim-rpc"]
-	path = bundles/vim-hug-neovim-rpc
+	path = bundle/vim-hug-neovim-rpc
 	url = https://github.com/roxma/vim-hug-neovim-rpc.git
