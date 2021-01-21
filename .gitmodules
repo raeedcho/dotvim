@@ -49,9 +49,6 @@
 [submodule "bundle/vim-airline-themes"]
 	path = pack/color/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "bundle/denite.nvim"]
-	path = pack/plugin/start/denite.nvim
-	url = https://github.com/Shougo/denite.nvim.git
 [submodule "bundle/syntastic"]
 	path = pack/syntax/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
@@ -73,9 +70,3 @@
 [submodule "bundle/vim-tmux-focus-events"]
 	path = pack/tmux/start/vim-tmux-focus-events
 	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
-[submodule "bundles/nvim-yarp"]
-	path = pack/plugin/start/nvim-yarp
-	url = https://github.com/roxma/nvim-yarp.git
-[submodule "bundles/vim-hug-neovim-rpc"]
-	path = pack/plugin/start/vim-hug-neovim-rpc
-	url = https://github.com/roxma/vim-hug-neovim-rpc.git
