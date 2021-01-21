@@ -2,80 +2,80 @@
 	path = bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen
 [submodule "bundle/railscasts-theme"]
-	path = bundle/railscasts-theme
+	path = pack/color/start/railscasts-theme
 	url = https://github.com/jpo/vim-railscasts-theme.git
 [submodule "bundle/gundo"]
-	path = bundle/gundo
+	path = pack/plugin/start/gundo
 	url = https://github.com/sjl/gundo.vim.git
 [submodule "bundle/vim-gitgutter"]
-	path = bundle/vim-gitgutter
+	path = pack/plugin/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
+	path = pack/plugin/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
 [submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
+	path = pack/plugin/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundle/tmuxline.vim"]
-	path = bundle/tmuxline.vim
+	path = pack/tmux/start/tmuxline.vim
 	url = https://github.com/edkolev/tmuxline.vim
 [submodule "bundle/vimwiki"]
-	path = bundle/vimwiki
+	path = pack/plugin/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
 [submodule "bundle/delimitMate"]
-	path = bundle/delimitMate
+	path = pack/plugin/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 [submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
+	path = pack/plugin/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
+	path = pack/plugin/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
 [submodule "bundle/vim-ledger"]
-	path = bundle/vim-ledger
+	path = pack/syntax/start/vim-ledger
 	url = https://github.com/ledger/vim-ledger.git
 [submodule "bundle/goyo.vim"]
-	path = bundle/goyo.vim
+	path = pack/plugin/start/goyo.vim
 	url = https://github.com/junegunn/goyo.vim
 [submodule "bundle/limelight.vim"]
-	path = bundle/limelight.vim
+	path = pack/plugin/start/limelight.vim
 	url = https://github.com/junegunn/limelight.vim
 [submodule "bundle/gruvbox"]
-	path = bundle/gruvbox
+	path = pack/color/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
 [submodule "bundle/Apprentice"]
-	path = bundle/Apprentice
+	path = pack/color/start/Apprentice
 	url = https://github.com/romainl/Apprentice.git
 [submodule "bundle/vim-airline-themes"]
-	path = bundle/vim-airline-themes
+	path = pack/color/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "bundle/denite.nvim"]
-	path = bundle/denite.nvim
+	path = pack/plugin/start/denite.nvim
 	url = https://github.com/Shougo/denite.nvim.git
 [submodule "bundle/syntastic"]
-	path = bundle/syntastic
+	path = pack/syntax/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "bundle/tslime.vim"]
-	path = bundle/tslime.vim
+	path = pack/tmux/start/tslime.vim
 	url = https://github.com/jgdavey/tslime.vim
 [submodule "bundle/tagbar"]
-	path = bundle/tagbar
+	path = pack/plugin/start/tagbar
 	url = https://github.com/majutsushi/tagbar.git
 [submodule "bundle/vim-pandoc-syntax"]
-	path = bundle/vim-pandoc-syntax
+	path = pack/syntax/start/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
 [submodule "bundle/vim-pandoc"]
-	path = bundle/vim-pandoc
+	path = pack/plugin/start/vim-pandoc
 	url = https://github.com/vim-pandoc/vim-pandoc.git
 [submodule "bundle/vim-toml"]
-	path = bundle/vim-toml
+	path = pack/syntax/start/vim-toml
 	url = https://github.com/cespare/vim-toml.git
 [submodule "bundle/vim-tmux-focus-events"]
-	path = bundle/vim-tmux-focus-events
+	path = pack/tmux/start/vim-tmux-focus-events
 	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
 [submodule "bundles/nvim-yarp"]
-	path = bundle/nvim-yarp
+	path = pack/plugin/start/nvim-yarp
 	url = https://github.com/roxma/nvim-yarp.git
 [submodule "bundles/vim-hug-neovim-rpc"]
-	path = bundle/vim-hug-neovim-rpc
+	path = pack/plugin/start/vim-hug-neovim-rpc
 	url = https://github.com/roxma/vim-hug-neovim-rpc.git

@@ -1,13 +1,7 @@
 " Setup stuff {{{
-runtime bundle/pathogen/autoload/pathogen.vim
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-
-" Execute pathogen stuff
-execute pathogen#infect()
-Helptags " Generate Helptags
 " }}}
 
 " Leader shortcuts {{{
@@ -62,14 +56,21 @@ nnoremap <leader>t :TagbarToggle<CR>
 "  }}}
 
 " Denite {{{
-call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>',
-    \'noremap')
-call denite#custom#map('insert', '<Esc>', '<NOP>',
-    \'noremap')
-call denite#custom#map('normal', '<Esc>', '<NOP>',
-    \'noremap')
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings()
+    inoremap <silent><buffer><expr> <Esc>
+                \ denite#do_map('nop')
+    nnoremap <silent><buffer><expr> <Esc>
+                \ denite#do_map('nop')
+    " call denite#custom#map('insert', 'jk', '<denite:enter_mode:normal>',
+    "             \'noremap')
+    " call denite#custom#map('insert', '<Esc>', '<NOP>',
+    "             \'noremap')
+    " call denite#custom#map('normal', '<Esc>', '<NOP>',
+    "             \'noremap')
+endfunction
 " nnoremap <leader>o :<C-u>Denite -split=no file_rec<CR>
-nnoremap <leader>ef :<C-u>Denite file_rec<CR>
+nnoremap <leader>ef :<C-u>Denite file/rec<CR>
 " nnoremap <leader>b :<C-u>Denite -split=no -mode=normal buffer<CR>
 nnoremap <leader>b :<C-u>Denite buffer<CR>
 nnoremap <leader>/ :<C-u>Denite line:buffers<CR>
