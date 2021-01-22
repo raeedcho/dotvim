@@ -70,3 +70,6 @@
 [submodule "bundle/vim-tmux-focus-events"]
 	path = pack/tmux/start/vim-tmux-focus-events
 	url = https://github.com/tmux-plugins/vim-tmux-focus-events.git
+[submodule "pack/plugin/start/fzf.vim"]
+	path = pack/plugin/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
