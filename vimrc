@@ -57,15 +57,18 @@ nnoremap <leader>t :TagbarToggle<CR>
 
 " FZF {{{
 " current file directory
-nnoremap <leader>e :<C-u>Files <C-r>=fnameescape(expand('%:p:h'))<CR>/<CR>
+nnoremap <leader>s :<C-u>Files <C-r>=fnameescape(expand('%:p:h'))<CR>/<CR>
 " current working directory
-nnoremap <leader>f :<C-u>Files<CR>
+nnoremap <leader>l :<C-u>Files<CR>
 nnoremap <leader>b :<C-u>Buffers<CR>
 nnoremap <leader>/ :<C-u>Lines<CR>
-nnoremap <leader>lo :<C-u>Commits<CR>
-nnoremap <leader>lc :<C-u>BCommits<CR>
-nnoremap <leader>m :<C-u>Maps<CR>
 nnoremap <leader>' :<C-u>Marks<CR>
+nnoremap <leader>ft :<C-u>Tags<CR>
+nnoremap <leader>fm :<C-u>Maps<CR>
+nnoremap <leader>fc :<C-u>Commits<CR>
+nnoremap <leader>fb :<C-u>BCommits<CR>
+nnoremap <leader>fg :<C-u>GFiles<CR>
+nnoremap <leader>fs :<C-u>GFiles?<CR>
 " }}}
 
 " Spellchecking {{{
