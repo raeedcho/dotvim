@@ -42,7 +42,7 @@ set nowrap
 "  }}}
 
 "  Tagbar {{{
-nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>st :TagbarToggle<CR>
 
 " let g:tagbar_type_vimwiki = {
 "           \   'ctagstype':'vimwiki'
@@ -56,19 +56,22 @@ nnoremap <leader>t :TagbarToggle<CR>
 "  }}}
 
 " FZF {{{
-" current file directory
-nnoremap <leader>s :<C-u>Files <C-r>=fnameescape(expand('%:p:h'))<CR>/<CR>
-" current working directory
-nnoremap <leader>l :<C-u>Files<CR>
+" settings
+let g:fzf_preview_window = ['right:50%:nohidden', 'ctrl-space']
 nnoremap <leader>b :<C-u>Buffers<CR>
 nnoremap <leader>/ :<C-u>Lines<CR>
+nnoremap <leader>t :<C-u>Tags<CR>
+nnoremap <leader>T :<C-u>BTags<CR>
 nnoremap <leader>' :<C-u>Marks<CR>
-nnoremap <leader>ft :<C-u>Tags<CR>
-nnoremap <leader>fm :<C-u>Maps<CR>
-nnoremap <leader>fc :<C-u>Commits<CR>
-nnoremap <leader>fb :<C-u>BCommits<CR>
-nnoremap <leader>fg :<C-u>GFiles<CR>
-nnoremap <leader>fs :<C-u>GFiles?<CR>
+nnoremap <leader>m :<C-u>Maps<CR>
+" current file directory
+nnoremap <leader>ef :<C-u>Files <C-r>=fnameescape(expand('%:p:h'))<CR>/<CR>
+nnoremap <leader>e. :<C-u>Files<CR>
+" fzf git commands
+nnoremap <leader>glo :<C-u>Commits<CR>
+nnoremap <leader>glf :<C-u>BCommits<CR>
+nnoremap <leader>gf :<C-u>GFiles<CR>
+nnoremap <leader>gs :<C-u>GFiles?<CR>
 " }}}
 
 " Spellchecking {{{
@@ -78,7 +81,7 @@ augroup SpellReverseHighlight
     autocmd ColorScheme * highlight SpellBad cterm=reverse
 augroup END
 
-nnoremap <leader>s :set spell!<CR>
+nnoremap <leader>sc :set spell!<CR>
 " }}}
 
 " Pandoc stuff {{{
@@ -316,7 +319,7 @@ let g:limelight_bop = '^'
 let g:limelight_eop = '\ze\n'
 
 " leader shortcut
-nnoremap <leader>g :Goyo<CR>
+nnoremap <leader>i :Goyo<CR>
 
 " autocommands for entering and exiting Goyo
 function! s:goyo_enter()
