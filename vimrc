@@ -12,7 +12,6 @@ nnoremap <leader>u :GundoToggle<CR>
 
 " remap escape to something easier
 inoremap jk <ESC>
-inoremap <ESC> <nop>
 
 " More natural movement between buffers
 " nnoremap <leader>j :bprevious<CR>
@@ -115,6 +114,8 @@ syntax enable " enable syntax processing
 
 " use current background color (fixes background in tmux...)
 set t_ut=
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
 
 " }}}
 
@@ -126,7 +127,6 @@ set expandtab " tabs are spaces
 " }}}
 
 " UI Config {{{
-set number relativenumber " set relative/absolute hybrid number in gutter
 if has("autocmd")
     augroup number_toggle " set relative/absolute number automatic toggle
         autocmd!
